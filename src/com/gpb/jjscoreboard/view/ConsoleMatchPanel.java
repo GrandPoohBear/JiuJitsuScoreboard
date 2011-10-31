@@ -2,6 +2,11 @@ package com.gpb.jjscoreboard.view;
 
 import info.clearthought.layout.TableLayout;
 
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -33,6 +38,24 @@ public class ConsoleMatchPanel implements ModelListener, JJSConstants {
 		
 		rightPlayer = new ConsolePlayerPanel(model.getRightPlayer());
 		panel.add(rightPlayer.getDisplayComponent(), "5,3");
+		
+		// Want to make sure that if the user clicks off of the text box,
+		// that we get focus so we keep listening for keys
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				panel.requestFocusInWindow();
+			}
+		});
+		
+		// I'd prefer the text box not have focus immediately.  This will
+		// make it so that the panel gets focus at the beginning.
+		panel.addHierarchyListener(new HierarchyListener() {
+			@Override
+			public void hierarchyChanged(HierarchyEvent arg0) {
+				panel.requestFocusInWindow();
+			}
+		});
 	}
 	
 	public JPanel getDisplayComponent() {
