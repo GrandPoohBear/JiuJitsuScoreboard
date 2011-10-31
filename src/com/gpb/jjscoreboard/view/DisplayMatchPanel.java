@@ -29,11 +29,13 @@ public class DisplayMatchPanel implements ModelListener, JJSConstants {
 		timerLabel.setFont(timerLabel.getFont().deriveFont(100.f));
 		panel.add(timerLabel, "1,1,5,1,c,c");
 		
+		// Left player and right player are swapped for the monitor facing
+		// the competitors
 		leftPlayer = new DisplayPlayerPanel(model.getLeftPlayer());
-		panel.add(leftPlayer.getDisplayComponent(), "1,3");
+		panel.add(leftPlayer.getDisplayComponent(), "5,3");
 		
 		rightPlayer = new DisplayPlayerPanel(model.getRightPlayer());
-		panel.add(rightPlayer.getDisplayComponent(), "5,3");
+		panel.add(rightPlayer.getDisplayComponent(), "1,3");
 		
 	}
 	
