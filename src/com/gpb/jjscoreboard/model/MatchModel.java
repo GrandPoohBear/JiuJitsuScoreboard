@@ -2,7 +2,9 @@ package com.gpb.jjscoreboard.model;
 
 import java.awt.Color;
 
-public class MatchModel extends BroadcastingModel {
+import com.gpb.jjscoreboard.JJSConstants;
+
+public class MatchModel extends BroadcastingModel implements JJSConstants {
 	private long millisRemaining;
 	private boolean clockRunning;
 	private int lastClockMinutes;
@@ -10,8 +12,8 @@ public class MatchModel extends BroadcastingModel {
 	private final PlayerModel rightPlayer;
 	
 	public MatchModel() {
-		leftPlayer = new PlayerModel("Red", Color.red);
-		rightPlayer = new PlayerModel("Green", Color.green);
+		leftPlayer = new PlayerModel("Red", Color.red, Side.LEFT);
+		rightPlayer = new PlayerModel("Green", Color.green, Side.RIGHT);
 		lastClockMinutes = 5;
 		resetMatch();
 	}
@@ -24,6 +26,13 @@ public class MatchModel extends BroadcastingModel {
 	private void setClockByMinutes(int minutes) {
 		millisRemaining = minutes * 60 * 1000;
 		lastClockMinutes = minutes;
+	}
+	
+	public String getTimeDisplayString() {
+		int minutes = (int)(millisRemaining / (1000 * 60));
+		int seconds = (int)((millisRemaining / 1000) % 60);
+		
+		return "" + minutes + ":" + seconds;
 	}
 
 	public long getMillisRemaining() {
