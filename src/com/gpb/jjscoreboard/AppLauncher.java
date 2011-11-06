@@ -2,6 +2,7 @@ package com.gpb.jjscoreboard;
 
 import javax.swing.JFrame;
 
+import com.gpb.jjscoreboard.controller.ClockController;
 import com.gpb.jjscoreboard.controller.KeyListenerController;
 import com.gpb.jjscoreboard.model.MatchModel;
 import com.gpb.jjscoreboard.view.ConsoleMatchPanel;
@@ -15,6 +16,8 @@ public class AppLauncher {
 		matchModel = new MatchModel();
 		
 		KeyListenerController keyListenerController = new KeyListenerController(matchModel);
+		@SuppressWarnings("unused")
+		ClockController clockController = new ClockController(matchModel);
 		
 		JFrame displayFrame = new JFrame("Jiu Jitsu Scoreboard");
 		displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,6 +27,7 @@ public class AppLauncher {
 		displayFrame.setVisible(true);
 		
 		JFrame consoleFrame = new JFrame("Jiu Jitsu Scoreboard Console");
+		consoleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		consoleFrame.addKeyListener(keyListenerController);
 		ConsoleMatchPanel consoleMatchPanel = new ConsoleMatchPanel(matchModel);
 		consoleMatchPanel.getDisplayComponent().addKeyListener(keyListenerController);

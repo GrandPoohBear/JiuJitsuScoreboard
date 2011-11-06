@@ -29,7 +29,7 @@ public class ConsoleMatchPanel implements ModelListener, JJSConstants {
 		double[][] tableLayoutCodes = {{10,F,10,P,10,F,10},{10,P,10,F,10}};
 		panel = new JPanel(new TableLayout(tableLayoutCodes));
 		
-		timerLabel = new JLabel("0:00");
+		timerLabel = new JLabel(model.getTimeDisplayString());
 		timerLabel.setFont(timerLabel.getFont().deriveFont(100.f));
 		panel.add(timerLabel, "1,1,5,1,c,c");
 		

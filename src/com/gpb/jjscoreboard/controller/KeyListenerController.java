@@ -63,6 +63,11 @@ public class KeyListenerController implements KeyListener, JJSConstants {
 			right.setPenalties(right.getPenalties() + 1);
 		}
 		
+		// Matchwide
+		else if (c == ' ') {
+			model.setClockRunning(!model.isClockRunning());
+		}
+		
 	}
 
 }

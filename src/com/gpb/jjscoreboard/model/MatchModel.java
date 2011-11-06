@@ -6,6 +6,7 @@ import com.gpb.jjscoreboard.JJSConstants;
 
 public class MatchModel extends BroadcastingModel implements JJSConstants {
 	private long millisRemaining;
+	private long lastClockUpdateMillis;
 	private boolean clockRunning;
 	private int lastClockMinutes;
 	private final PlayerModel leftPlayer;
@@ -21,18 +22,24 @@ public class MatchModel extends BroadcastingModel implements JJSConstants {
 	public void resetMatch() {
 		setClockByMinutes(lastClockMinutes);
 		clockRunning = false;
+		broadcastModelChange();
 	}
 
 	private void setClockByMinutes(int minutes) {
 		millisRemaining = minutes * 60 * 1000;
 		lastClockMinutes = minutes;
+		broadcastModelChange();
 	}
 	
 	public String getTimeDisplayString() {
 		int minutes = (int)(millisRemaining / (1000 * 60));
 		int seconds = (int)((millisRemaining / 1000) % 60);
 		
-		return "" + minutes + ":" + seconds;
+		String colon = ":";
+		if (millisRemaining % 1000 < 500 && clockRunning)
+			colon = " ";
+		
+		return String.format("%d%s%02d", minutes, colon, seconds);
 	}
 
 	public long getMillisRemaining() {
@@ -41,6 +48,7 @@ public class MatchModel extends BroadcastingModel implements JJSConstants {
 
 	public void setMillisRemaining(long millisRemaining) {
 		this.millisRemaining = millisRemaining;
+		broadcastModelChange();
 	}
 
 	public boolean isClockRunning() {
@@ -49,6 +57,17 @@ public class MatchModel extends BroadcastingModel implements JJSConstants {
 
 	public void setClockRunning(boolean clockRunning) {
 		this.clockRunning = clockRunning;
+		lastClockUpdateMillis = System.currentTimeMillis();
+		broadcastModelChange();
+	}
+	
+	public void tickClock() {
+		if (clockRunning) {
+			long curMillis = System.currentTimeMillis();
+			long delta = curMillis - lastClockUpdateMillis;
+			setMillisRemaining(millisRemaining -= delta);
+			lastClockUpdateMillis = curMillis;
+		}
 	}
 
 	public PlayerModel getLeftPlayer() {
