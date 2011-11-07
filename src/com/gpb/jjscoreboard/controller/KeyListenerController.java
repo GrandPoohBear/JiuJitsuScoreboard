@@ -77,6 +77,29 @@ public class KeyListenerController implements KeyListener, JJSConstants {
 			model.subtractTimeIncrement();
 		}
 		
+		// Time presets
+		else if (c == TIME_SET_SHORTCUTS[0] && !model.isClockRunning()) {
+			model.setClockByMinutes(1);
+		} else if (c == TIME_SET_SHORTCUTS[1] && !model.isClockRunning()) {
+			model.setClockByMinutes(2);
+		} else if (c == TIME_SET_SHORTCUTS[2] && !model.isClockRunning()) {
+			model.setClockByMinutes(3);
+		} else if (c == TIME_SET_SHORTCUTS[3] && !model.isClockRunning()) {
+			model.setClockByMinutes(4);
+		} else if (c == TIME_SET_SHORTCUTS[4] && !model.isClockRunning()) {
+			model.setClockByMinutes(5);
+		} else if (c == TIME_SET_SHORTCUTS[5] && !model.isClockRunning()) {
+			model.setClockByMinutes(6);
+		} else if (c == TIME_SET_SHORTCUTS[6] && !model.isClockRunning()) {
+			model.setClockByMinutes(7);
+		} else if (c == TIME_SET_SHORTCUTS[7] && !model.isClockRunning()) {
+			model.setClockByMinutes(8);
+		} else if (c == TIME_SET_SHORTCUTS[8] && !model.isClockRunning()) {
+			model.setClockByMinutes(9);
+		} else if (c == TIME_SET_SHORTCUTS[9] && !model.isClockRunning()) {
+			model.setClockByMinutes(10);
+		} 
+		
 	}
 
 }

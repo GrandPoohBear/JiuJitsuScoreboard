@@ -49,6 +49,6 @@ public interface JJSConstants {
 	
 	public static final String BUZZ_RESOURCE_PATH = "/buzzer.wav";
 	
-	public static final int STARTING_CLOCK_MINUTES = 1;
+	public static final int STARTING_CLOCK_MINUTES = 5;
 	
 }
