@@ -29,15 +29,16 @@ public class DisplayPlayerPanel implements ModelListener, JJSConstants {
 		panel = new JPanel(new TableLayout(layoutCodes));
 		
 		nameLabel = new JLabel(this.model.getName());
+		nameLabel.setFont(nameLabel.getFont().deriveFont(60.f));
 		panel.add(nameLabel, "1,1,c,c");
 		
-		pointsBox = new ColoredBoxPanel("Points", POINT_PANEL_BG, Color.white);
+		pointsBox = new ColoredBoxPanel("Points", POINT_PANEL_BG, Color.white, 150.f);
 		panel.add(pointsBox, "1,3");
 		
-		advantagesBox = new ColoredBoxPanel("Advantages", ADV_PANEL_BG, Color.white);
+		advantagesBox = new ColoredBoxPanel("Advantages", ADV_PANEL_BG, Color.white, 60.f);
 		panel.add(advantagesBox, "1,5");
 		
-		penaltiesBox = new ColoredBoxPanel("Penalties", PEN_PANEL_BG, Color.white);
+		penaltiesBox = new ColoredBoxPanel("Penalties", PEN_PANEL_BG, Color.white, 60.f);
 		panel.add(penaltiesBox, "1,7");
 	}
 	
@@ -62,7 +63,8 @@ public class DisplayPlayerPanel implements ModelListener, JJSConstants {
 		private final JLabel numberLabel;
 		private final JLabel descriptionLabel;
 
-		public ColoredBoxPanel(String description, Color bgColor, Color textColor) {
+		public ColoredBoxPanel(String description, Color bgColor, Color textColor, 
+				float fontSize) {
 			super();
 			double [][] layoutCodes = {{F},{F,P}};
 			setLayout(new TableLayout(layoutCodes));
@@ -74,11 +76,12 @@ public class DisplayPlayerPanel implements ModelListener, JJSConstants {
 			
 			numberLabel = new JLabel("0");
 			numberLabel.setForeground(this.textColor);
-			numberLabel.setFont(numberLabel.getFont().deriveFont(36.f));
+			numberLabel.setFont(numberLabel.getFont().deriveFont(fontSize));
 			add(numberLabel, "0,0,c,c");
 			
 			descriptionLabel = new JLabel(this.description);
 			descriptionLabel.setForeground(this.textColor);
+			descriptionLabel.setFont(descriptionLabel.getFont().deriveFont(18.f));
 			add(descriptionLabel, "0,1,c,c");
 		}
 		

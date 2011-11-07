@@ -33,6 +33,9 @@ public class KeyListenerController implements KeyListener, JJSConstants {
 	public void keyTyped(KeyEvent e) {
 		char c = e.getKeyChar();
 		
+		//Make sure we don't get thrown off by the shift key
+		c = Character.toLowerCase(c);
+		
 		// Left
 		if (c == left.getDecScoreChar()) {
 			left.setScore(left.getScore() - 1);
@@ -64,8 +67,14 @@ public class KeyListenerController implements KeyListener, JJSConstants {
 		}
 		
 		// Matchwide
-		else if (c == ' ') {
+		else if (c == START_STOP_TIME_CHAR) {
 			model.setClockRunning(!model.isClockRunning());
+		} else if (c == RESET_MATCH_CHAR) {
+			model.resetMatch();
+		} else if (c == ADD_TIME1 || c == ADD_TIME2) {
+			model.addTimeIncrement();
+		} else if (c == SUB_TIME1 || c == SUB_TIME2) {
+			model.subtractTimeIncrement();
 		}
 		
 	}

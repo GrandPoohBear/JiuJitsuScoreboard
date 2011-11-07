@@ -135,6 +135,9 @@ public class ConsolePlayerPanel implements ModelListener, JJSConstants {
 			double[][] layoutCodes = {{P,F,P},{F,P}};
 			setLayout(new TableLayout(layoutCodes));
 			
+			decrementKey = Character.toUpperCase(decrementKey);
+			incrementKey = Character.toUpperCase(incrementKey);
+			
 			decrementButton = new JButton("<- " + decrementKey);
 			decrementButton.setFocusable(false);
 			add(decrementButton, "0,0");

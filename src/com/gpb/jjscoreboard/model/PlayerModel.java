@@ -1,7 +1,5 @@
 package com.gpb.jjscoreboard.model;
 
-import java.awt.Color;
-
 import com.gpb.jjscoreboard.JJSConstants;
 
 public class PlayerModel extends BroadcastingModel implements JJSConstants {
@@ -9,12 +7,10 @@ public class PlayerModel extends BroadcastingModel implements JJSConstants {
 	private int advantages;
 	private int penalties;
 	private String name;
-	private Color color;
-	private Side side;
+	private final Side side;
 	
-	public PlayerModel(String name, Color color, Side side) {
+	public PlayerModel(String name, Side side) {
 		this.name = name;
-		this.color = color;
 		this.side = side;
 		resetPlayer();
 	}
@@ -52,7 +48,7 @@ public class PlayerModel extends BroadcastingModel implements JJSConstants {
 	}
 	
 	public void setScore(int score) {
-		this.score = score;
+		this.score = Math.max(score, 0);
 		broadcastModelChange();
 	}
 	
@@ -61,7 +57,7 @@ public class PlayerModel extends BroadcastingModel implements JJSConstants {
 	}
 	
 	public void setAdvantages(int advantages) {
-		this.advantages = advantages;
+		this.advantages = Math.max(advantages, 0);
 		broadcastModelChange();
 	}
 	
@@ -70,7 +66,7 @@ public class PlayerModel extends BroadcastingModel implements JJSConstants {
 	}
 	
 	public void setPenalties(int penalties) {
-		this.penalties = penalties;
+		this.penalties = Math.max(penalties, 0);
 		broadcastModelChange();
 	}
 	
@@ -80,15 +76,6 @@ public class PlayerModel extends BroadcastingModel implements JJSConstants {
 	
 	public void setName(String name) {
 		this.name = name;
-		broadcastModelChange();
-	}
-	
-	public Color getColor() {
-		return color;
-	}
-	
-	public void setColor(Color color) {
-		this.color = color;
 		broadcastModelChange();
 	}
 }

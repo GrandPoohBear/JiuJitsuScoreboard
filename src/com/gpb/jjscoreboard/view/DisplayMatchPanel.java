@@ -2,6 +2,9 @@ package com.gpb.jjscoreboard.view;
 
 import info.clearthought.layout.TableLayout;
 
+import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -25,9 +28,12 @@ public class DisplayMatchPanel implements ModelListener, JJSConstants {
 		
 		double [][] tableLayoutSetup = {{10,F,10,P,10,F,10},{10,P,10,F,10}};
 		panel = new JPanel(new TableLayout(tableLayoutSetup));
+		panel.setBackground(Color.black);
+		panel.setPreferredSize(new Dimension(800,600));
 		
 		timerLabel = new JLabel(model.getTimeDisplayString());
-		timerLabel.setFont(timerLabel.getFont().deriveFont(100.f));
+		timerLabel.setForeground(Color.white);
+		timerLabel.setFont(timerLabel.getFont().deriveFont(120.f));
 		panel.add(timerLabel, "1,1,5,1,c,c");
 		
 		// Left player and right player are swapped for the monitor facing
@@ -47,6 +53,7 @@ public class DisplayMatchPanel implements ModelListener, JJSConstants {
 	@Override
 	public void updateFromModel() {	
 		timerLabel.setText(model.getTimeDisplayString());
+		timerLabel.setForeground(model.isCriticalTime() ? Color.RED : Color.WHITE);
 	}
 
 }

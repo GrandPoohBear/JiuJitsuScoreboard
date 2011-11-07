@@ -2,6 +2,7 @@ package com.gpb.jjscoreboard.view;
 
 import info.clearthought.layout.TableLayout;
 
+import java.awt.Color;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
 import java.awt.event.MouseAdapter;
@@ -21,12 +22,13 @@ public class ConsoleMatchPanel implements ModelListener, JJSConstants {
 	private final JLabel timerLabel;
 	private final ConsolePlayerPanel leftPlayer;
 	private final ConsolePlayerPanel rightPlayer;
+	private final ConsoleAdminPanel adminPanel;
 	
 	public ConsoleMatchPanel(MatchModel model) {
 		this.model = model;
 		model.addModelListener(this);
 		
-		double[][] tableLayoutCodes = {{10,F,10,P,10,F,10},{10,P,10,F,10}};
+		double[][] tableLayoutCodes = {{10,F,10,P,10,F,10},{10,P,10,F,10,P,10}};
 		panel = new JPanel(new TableLayout(tableLayoutCodes));
 		
 		timerLabel = new JLabel(model.getTimeDisplayString());
@@ -38,6 +40,9 @@ public class ConsoleMatchPanel implements ModelListener, JJSConstants {
 		
 		rightPlayer = new ConsolePlayerPanel(model.getRightPlayer());
 		panel.add(rightPlayer.getDisplayComponent(), "5,3");
+		
+		adminPanel = new ConsoleAdminPanel(model);
+		panel.add(adminPanel.getDisplayComponent(), "1,5,5,5");
 		
 		// Want to make sure that if the user clicks off of the text box,
 		// that we get focus so we keep listening for keys
@@ -65,6 +70,7 @@ public class ConsoleMatchPanel implements ModelListener, JJSConstants {
 	@Override
 	public void updateFromModel() {
 		timerLabel.setText(model.getTimeDisplayString());
+		timerLabel.setForeground(model.isCriticalTime() ? Color.RED : Color.BLACK);
 	}
 	
 }
