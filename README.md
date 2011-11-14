@@ -8,16 +8,12 @@ external monitor (facing the competitors and audience.)
 Feel free to use it, modify it, and distribute free of charge according to the
 included BSD license.
 
-Andy Isaacson 10/2011
-
-andygetshismail@gmail.com
+Andy Isaacson 10/2011  
+andygetshismail@gmail.com  
 
 Shout outs:
 -----------
-Northwest Martial Arts, Eugene, OR
-
-Marco Nascimento/Pitbull Jiu Jitsu, Foster City, CA
-
-Salem Keizer Brazilian Jiu Jitsu, Keizer, OR
-
+Northwest Martial Arts, Eugene, OR  
+Marco Nascimento/Pitbull Jiu Jitsu, Foster City, CA  
+Salem Keizer Brazilian Jiu Jitsu, Keizer, OR  
 Abu Dhabi Combat Club, Abu Dhabi, UAE
