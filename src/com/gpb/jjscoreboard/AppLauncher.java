@@ -1,5 +1,7 @@
 package com.gpb.jjscoreboard;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 import com.gpb.jjscoreboard.controller.ClockController;
@@ -35,6 +37,7 @@ public class AppLauncher {
 		displayFrame.getContentPane().add(new DisplayMatchPanel(matchModel).getDisplayComponent());
 		displayFrame.pack();
 		displayFrame.setVisible(true);
+		displayFrame.setMinimumSize(new Dimension(800,625));
 		
 		JFrame consoleFrame = new JFrame("Jiu Jitsu Scoreboard Console");
 		consoleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,6 +48,7 @@ public class AppLauncher {
 		consoleFrame.pack();
 		consoleFrame.setVisible(true);
 		consoleFrame.setLocation(801, 0);
+		consoleFrame.setResizable(false);
 	}
 	
 	public static void main(String[] args) {
