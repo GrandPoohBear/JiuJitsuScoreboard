@@ -140,19 +140,21 @@ public class ConsolePlayerPanel implements ModelListener, JJSConstants {
 			
 			decrementButton = new JButton("<- " + decrementKey);
 			decrementButton.setFocusable(false);
-			add(decrementButton, "0,0");
+			add(decrementButton, "0,0,c,c");
 			
 			numberLabel = new JLabel("0");
 			numberLabel.setForeground(textColor);
-			add(numberLabel, "1,0");
+			numberLabel.setFont(numberLabel.getFont().deriveFont(14.f));
+			add(numberLabel, "1,0,c,c");
 			
 			incrementButton = new JButton(incrementKey + " ->");
 			incrementButton.setFocusable(false);
-			add(incrementButton, "2,0");
+			add(incrementButton, "2,0,c,c");
 			
 			descriptionLabel = new JLabel(description);
 			descriptionLabel.setForeground(textColor);
-			add(descriptionLabel, "0,1,2,1");
+			descriptionLabel.setFont(descriptionLabel.getFont().deriveFont(14.f));
+			add(descriptionLabel, "0,1,2,1,c,c");
 			
 			setBackground(bgColor);
 		}

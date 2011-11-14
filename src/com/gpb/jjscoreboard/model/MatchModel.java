@@ -26,6 +26,8 @@ public class MatchModel extends BroadcastingModel implements JJSConstants {
 		setClockByMinutes(lastClockMinutes);
 		clockRunning = false;
 		buzzPending = false;
+		leftPlayer.resetPlayer();
+		rightPlayer.resetPlayer();
 		broadcastModelChange();
 	}
 
